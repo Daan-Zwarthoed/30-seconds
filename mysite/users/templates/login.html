@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% load static %} {% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/users.css' %}" />
+{% endblock %} {% block content %}
+<h1>Welcome to the 30 seconds ish app</h1>
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+<form method="post" class="loginForm">
+  {% csrf_token %}
+  <label for="username">username</label>
+  <input type="text" id="username" name="username" />
+
+  <label for="password">password</label>
+  <input type="password" id="password" name="password" />
+
+  <button>login</button>
+</form>
+<a href="register">register</a>
+{% endblock %}

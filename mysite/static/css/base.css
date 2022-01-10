@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+body {
+  background-color: rgb(62, 105, 105);
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 2em;
+  padding: 0 1em 0 1em;
+  background-color: darkslategrey;
+}
+
+main {
+  padding: 0 1em 0 1em !important;
+}
+
+form input {
+  color: black;
+}
+
+.hidden {
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.error,
+.errorlist li {
+  color: rgb(241, 97, 97);
+}

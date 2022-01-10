@@ -1,0 +1,6 @@
+{% extends "base.html" %} {% load static %} {% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+{% endblock %} {% block content %}
+<h1>current group</h1>
+<p>{{ user }}</p>
+{% endblock %}

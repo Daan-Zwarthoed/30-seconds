@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% load static %} {% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/users.css' %}" />
+{% endblock %}{% block content %}
+<div class="login">
+  {% if messages %}
+  <ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <h1>Create account - The Great Django Blog</h1>
+
+  <form method="post" class="registerForm">
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+      <tr>
+        <td></td>
+        <td><button>Register</button></td>
+      </tr>
+    </table>
+  </form>
+</div>
+<a href="/">Login</a>
+{% endblock %}

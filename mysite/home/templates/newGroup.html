@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% load static %} {% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+{% endblock %} {% block scripts %}
+<script type="text/javascript" src="{% static 'js/newGroup.js' %}"></script>
+{% endblock %} {% block content %}
+<h1>Make a group</h1>
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+<form method="post" class="makeGroupForm">
+  {% csrf_token %}
+  <label for="name">Name:</label>
+  <input type="text" name="name" />
+
+  <label for="addPerson">Add person:</label>
+  <input type="text" name="addPerson" class="addPersonInput" />
+  <button class="addPersonButton">Add person</button>
+  <ul class="personList">
+    <li>
+      <p>{{ user }}</p>
+      <div class="delete">Delete</div>
+    </li>
+  </ul>
+  <button class="makeGroup">Make group</button>
+  <input
+    type="text"
+    name="personListInput"
+    value="{{ user }}"
+    class="personListInput hidden"
+  />
+  <div>Add another</div>
+</form>
+{% endblock %}
