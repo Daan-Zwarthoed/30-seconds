@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% load static %} {% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/play.css' %}" />
+{% endblock %} {% block scripts %}
+<script type="text/javascript" src="{% static 'js/playing.js' %}"></script>
+{% endblock %} {% block content %}
+<h1>current settings</h1>
+<h3>time</h3>
+<p>{{ time }}</p>
+<h3>Amount of words</h3>
+<p>{{ amountWords }}</p>
+{% for nameAndList in currentGroup.wordList %}
+<p>{{nameAndList.personName}}</p>
+<p class="hidden">{{ nameAndList.wordList }}</p>
+{% endfor %} {% endblock %}

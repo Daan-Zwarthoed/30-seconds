@@ -1,6 +1,45 @@
 {% extends "base.html" %} {% load static %} {% block styles %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+{% endblock %} {% block scripts %}
+<script type="text/javascript" src="{% static 'js/group.js' %}"></script>
 {% endblock %} {% block content %}
 <h1>current group</h1>
 <p>{{ user }}</p>
+<p>{{ currentGroup.name }}</p>
+<ul class="personList"></ul>
+{% for person in currentGroup.personList.split %}
+<li>{{ person }}</li>
+{% endfor %}
+</ul>
+<a href="/play">start playing</a>
+<h2>Your words:</h2>
+{% for nameAndList in currentGroup.wordList %}
+{% if nameAndList.personName == user.username %}
+<form method="post" class="addWordsForm">
+    {% csrf_token %}
+    <ul class="wordList">
+
+        {% for word in nameAndList.wordList.split %}
+        <li>
+            <p>{{ word }}</p>
+            <div class="delete">delete</div>
+        </li>
+        {% endfor %}
+    </ul>
+    <input type="text" name="addWordInput" class="addWordInput">
+    <button class="addWordButton">Add word</button>
+    <input type="text" name="name" value="{{ currentGroup.name }}" class="hidden" />
+    <input type="text" name="wordListInput" value="{{ nameAndList.wordList }}" class="wordListInput hidden" />
+    <button class="saveChangesButton">Save changes</button>
+</form>
+<p class="currentGroupWordList hidden">
+    {% for word in nameAndList.wordList.split %}
+    {{ word }}
+    {% endfor %}
+</p>
+{% endif %}
+{% endfor %}
+
+
+
 {% endblock %}

@@ -4,4 +4,12 @@
 <h1>hallo</h1>
 <p>{{ user }}</p>
 <a href="/newGroup">Create new group</a>
+<form method="post" action="/group">
+  {% csrf_token %} {% for group in invitedGroups %}
+  <button name="name" value="{{group.name}}">
+    <p>{{group.name}}</p>
+    <p>{{group.personList}}</p>
+  </button>
+  {% endfor %}
+</form>
 {% endblock %}

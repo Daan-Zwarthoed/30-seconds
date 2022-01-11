@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% load static %} {% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/play.css' %}" />
+{% endblock %} {% block scripts %}
+<script type="text/javascript" src="{% static 'js/playing.js' %}"></script>
+{% endblock %} {% block content %}
+<h1>hallo</h1>
+<form action="playing" method="post">
+  {% csrf_token %}
+  <label for="time">Time:</label>
+  <input type="number" id="time" name="time" class="time" value="30" />
+
+  <label for="amountWords">Amount of words:</label>
+  <input type="number" id="amountWords" name="amountWords" value="3" />
+
+  <input
+    type="text"
+    name="currentGroup"
+    value="{{ currentGroup }}"
+    class="currentGroup hidden"
+  />
+
+  <button>Start playing</button>
+</form>
+{% endblock %}
